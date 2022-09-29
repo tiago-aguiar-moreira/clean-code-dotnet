@@ -4,34 +4,34 @@ Se você gosta do projeto `clean-code-dotnet` ou se te ajudou, por favor dê uma
 
 Confira meu [blog](https://medium.com/@thangchung) ou diga um oi no [Twitter](https://twitter.com/thangchung)!
 
-# Table of Contents
+# Sumário
 
-- [Clean Code concepts adapted for .NET/.NET Core](#clean-code-concepts-adapted-for-netnet-core)
-- [Table of Contents](#table-of-contents)
-- [Introduction](#introduction)
-- [Clean Code .NET](#clean-code-net)
-  - [Naming](#naming)
-  - [Variables](#variables)
-  - [Functions](#functions)
-  - [Objects and Data Structures](#objects-and-data-structures)
+- [Conceitos do Clean Code adaptados para .NET/.NET Core](#clean-code-concepts-adapted-for-netnet-core)
+- [Sumário](#sumário)
+- [Introdução](#introdução)
+- [Código Limpo .NET](#código-limpo-net)
+  - [Nomeando](#nomeando)
+  - [Variáveis](#variáveis)
+  - [Funções](#funções)
+  - [Objetos e Estrutura de Dados](#objetos-e-estrutura-de-dados)
   - [Classes](#classes)
   - [SOLID](#solid)
-  - [Testing](#testing)
-  - [Concurrency](#concurrency)
-  - [Error Handling](#error-handling)
-  - [Formatting](#formatting)
-  - [Comments](#comments)
-- [Other Clean Code Resources](#other-clean-code-resources)
-  - [Other Clean Code Lists](#other-clean-code-lists)
-  - [Style Guides](#style-guides)
-  - [Tools](#tools)
-  - [Cheatsheets](#cheatsheets)
-- [Contributors](#contributors)
-- [Backers](#backers)
-- [Sponsors](#sponsors)
-- [License](#license)
+  - [Testes](#testes)
+  - [Concorrência](#concorrência)
+  - [Manipulando Erros](#manipulando-erros)
+  - [Formatando](#formatando)
+  - [Comentários](#comentários)
+- [Outros Recursos de Código Limpo](#outros-recursos-de-código-limpo)
+  - [Outras Listas de Código Limpo](#outras-listas-de-código-limpo)
+  - [Guias de estilo](#guias-de-estilo)
+  - [Ferramentas](#ferramentas)
+  - [Dicas](#dicas)
+- [Contribuidores](#contribuidores)
+- [Apoiadores](#apoiadores)
+- [Patrocinadores](#patrocinadores)
+- [Licença](#licença)
 
-# Introduction
+# Introdução
 
 ![Humorous image of software quality estimation as a count of how many expletives you shout when reading code](http://www.osnews.com/images/comics/wtfm.jpg)
 
@@ -41,9 +41,9 @@ Not every principle herein has to be strictly followed, and even fewer will be u
 
 Inspired from [clean-code-javascript](https://github.com/ryanmcdermott/clean-code-javascript) and [clean-code-php](https://github.com/jupeter/clean-code-php) lists.
 
-# Clean Code .NET
+# Código Limpo .NET
 
-## Naming
+## Nomeando
 
 <details>
   <summary><b>Avoid using bad names</b></summary>
@@ -61,7 +61,7 @@ int d;
 int daySinceModification;
 ```
 
-**[⬆ Back to top](#table-of-contents)**
+**[⬆ back to top](#sumário)**
 
 </details>
 
@@ -82,7 +82,7 @@ var dataFromDb = db.GetFromService().ToList();
 var listOfEmployee = _employeeService.GetEmployees().ToList();
 ```
 
-**[⬆ Back to top](#table-of-contents)**
+**[⬆ back to top](#sumário)**
 
 </details>
 
@@ -127,7 +127,7 @@ public bool IsShopOpen(string day, int amount)
 }
 ```
 
-**[⬆ Back to top](#table-of-contents)**
+**[⬆ back to top](#sumário)**
 
 </details>
 
@@ -170,7 +170,7 @@ class Animal {}
 class Alpaca {}
 ```
 
-**[⬆ back to top](#table-of-contents)**
+**[⬆ back to top](#sumário)**
 
 </details>
 
@@ -199,7 +199,7 @@ public class Employee
 }
 ```
 
-**[⬆ Back to top](#table-of-contents)**
+**[⬆ back to top](#sumário)**
 
 </details>
 
@@ -230,7 +230,7 @@ public double CalculateSalary(int workingDays, int workingHours)
 }
 ```
 
-**[⬆ Back to top](#table-of-contents)**
+**[⬆ back to top](#sumário)**
 
 </details>
 
@@ -275,11 +275,11 @@ public static void main(String[] args)
 }
 ```
 
-**[⬆ Back to top](#table-of-contents)**
+**[⬆ back to top](#sumário)**
 
 </details>
 
-## Variables
+## Variáveis
 
 <details>
   <summary><b>Avoid nesting too deeply and return early</b></summary>
@@ -388,7 +388,7 @@ public long Fibonacci(int n)
 }
 ```
 
-**[⬆ back to top](#table-of-contents)**
+**[⬆ back to top](#sumário)**
 
 </details>
 
@@ -433,7 +433,7 @@ foreach (var location in locations)
 }
 ```
 
-**[⬆ back to top](#table-of-contents)**
+**[⬆ back to top](#sumário)**
 
 </details>
 
@@ -463,7 +463,7 @@ if (userRole == ADMIN_ROLE)
 
 Using this we only have to change in centralize place and others will adapt it.
 
-**[⬆ back to top](#table-of-contents)**
+**[⬆ back to top](#sumário)**
 
 </details>
 
@@ -498,7 +498,7 @@ public class Car
 }
 ```
 
-**[⬆ back to top](#table-of-contents)**
+**[⬆ back to top](#sumário)**
 
 </details>
 
@@ -517,7 +517,7 @@ var ymdstr = DateTime.UtcNow.ToString("MMMM dd, yyyy");
 var currentDate = DateTime.UtcNow.ToString("MMMM dd, yyyy");
 ```
 
-**[⬆ Back to top](#table-of-contents)**
+**[⬆ back to top](#sumário)**
 
 </details>
 
@@ -539,7 +539,7 @@ GetUserProfile();
 GetUser();
 ```
 
-**[⬆ Back to top](#table-of-contents)**
+**[⬆ back to top](#sumário)**
 
 </details>
 
@@ -583,7 +583,7 @@ Console.Write("JSON form of Data object: ");
 Console.WriteLine(sr2.ReadToEnd());
 ```
 
-**[⬆ Back to top](#table-of-contents)**
+**[⬆ back to top](#sumário)**
 
 </details>
 
@@ -626,7 +626,7 @@ if (person.PersonAccess == PersonAccess.ACCESS_UPDATE)
 }
 ```
 
-**[⬆ Back to top](#table-of-contents)**
+**[⬆ back to top](#sumário)**
 
 </details>
 
@@ -661,7 +661,7 @@ if(cityGroup.Success == true && zipCodeGroup.Success == true)
 }
 ```
 
-**[⬆ back to top](#table-of-contents)**
+**[⬆ back to top](#sumário)**
 
 </details>
 
@@ -691,11 +691,11 @@ public void CreateMicrobrewery(string breweryName = "Hipster Brew Co.")
 }
 ```
 
-**[⬆ back to top](#table-of-contents)**
+**[⬆ back to top](#sumário)**
 
 </details>
 
-## Functions
+## Funções
 
 <details>
   <summary><b>Avoid side effects</b></summary>
@@ -741,7 +741,7 @@ Console.WriteLine(name); // Ryan McDermott
 Console.WriteLine(fullName); // His first name is Ryan, and his last name is McDermott
 ```
 
-**[⬆ back to top](#table-of-contents)**
+**[⬆ back to top](#sumário)**
 
 </details>
 
@@ -776,7 +776,7 @@ if (IsDOMNodePresent(node))
 }
 ```
 
-**[⬆ back to top](#table-of-contents)**
+**[⬆ back to top](#sumário)**
 
 </details>
 
@@ -849,7 +849,7 @@ class Cessna : IAirplane
 }
 ```
 
-**[⬆ back to top](#table-of-contents)**
+**[⬆ back to top](#sumário)**
 
 </details>
 
@@ -898,7 +898,7 @@ public Path TravelToTexas(object vehicle)
 }
 ```
 
-**[⬆ back to top](#table-of-contents)**
+**[⬆ back to top](#sumário)**
 
 </details>
 
@@ -929,7 +929,7 @@ public int Combine(int val1, int val2)
 }
 ```
 
-**[⬆ back to top](#table-of-contents)**
+**[⬆ back to top](#sumário)**
 
 </details>
 
@@ -968,7 +968,7 @@ public void CreateTempFile(string name)
 }
 ```
 
-**[⬆ back to top](#table-of-contents)**
+**[⬆ back to top](#sumário)**
 
 </details>
 
@@ -1018,7 +1018,7 @@ var configuration = new Configuration(new Dictionary<string, string>() {
 
 And now you must use instance of `Configuration` in your application.
 
-**[⬆ back to top](#table-of-contents)**
+**[⬆ back to top](#sumário)**
 
 </details>
 
@@ -1085,7 +1085,7 @@ var connection = new DBConnection(options);
 
 And now you must use instance of `DBConnection` in your application.
 
-**[⬆ back to top](#table-of-contents)**
+**[⬆ back to top](#sumário)**
 
 </details>
 
@@ -1130,7 +1130,7 @@ public void CreateMenu(MenuConfig config)
 }
 ```
 
-**[⬆ back to top](#table-of-contents)**
+**[⬆ back to top](#sumário)**
 
 </details>
 
@@ -1171,7 +1171,7 @@ public List<Client> GetActiveClients(string[] clients)
 }
 ```
 
-**[⬆ back to top](#table-of-contents)**
+**[⬆ back to top](#sumário)**
 
 </details>
 
@@ -1214,7 +1214,7 @@ var message = new Email(...);
 message.Send();
 ```
 
-**[⬆ back to top](#table-of-contents)**
+**[⬆ back to top](#sumário)**
 
 </details>
 
@@ -1368,7 +1368,7 @@ class BetterJSAlternative
 }
 ```
 
-**[⬆ back to top](#table-of-contents)**
+**[⬆ back to top](#sumário)**
 
 </details>
 
@@ -1478,7 +1478,7 @@ var review = new PerformanceReview(employee);
 review.PerfReview();
 ```
 
-**[⬆ back to top](#table-of-contents)**
+**[⬆ back to top](#sumário)**
 
 </details>
 
@@ -1503,7 +1503,7 @@ if (article.IsPublished())
 }
 ```
 
-**[⬆ back to top](#table-of-contents)**
+**[⬆ back to top](#sumário)**
 
 </details>
 
@@ -1541,11 +1541,11 @@ var request = RequestModule(requestUrl);
 InventoryTracker("apples", request, "www.inventory-awesome.io");
 ```
 
-**[⬆ back to top](#table-of-contents)**
+**[⬆ back to top](#sumário)**
 
 </details>
 
-## Objects and Data Structures
+## Objetos e Estrutura de Dados
 
 <details>
   <summary><b>Use getters and setters</b></summary>
@@ -1619,7 +1619,7 @@ bankAccount.WithdrawBalance(price);
 balance = bankAccount.Balance;
 ```
 
-**[⬆ back to top](#table-of-contents)**
+**[⬆ back to top](#sumário)**
 
 </details>
 
@@ -1660,7 +1660,7 @@ var employee = new Employee("John Doe");
 Console.WriteLine(employee.Name); // Employee name: John Doe
 ```
 
-**[⬆ back to top](#table-of-contents)**
+**[⬆ back to top](#sumário)**
 
 </details>
 
@@ -1726,7 +1726,7 @@ internal static void ListFluentExtensions()
 }
 ```
 
-**[⬆ back to top](#table-of-contents)**
+**[⬆ back to top](#sumário)**
 
 </details>
 
@@ -1817,7 +1817,7 @@ class Employee
 }
 ```
 
-**[⬆ back to top](#table-of-contents)**
+**[⬆ back to top](#sumário)**
 
 </details>
 
@@ -1909,7 +1909,7 @@ class UserSettings
 }
 ```
 
-**[⬆ back to top](#table-of-contents)**
+**[⬆ back to top](#sumário)**
 
 </details>
 
@@ -2022,7 +2022,7 @@ class HttpRequester
 }
 ```
 
-**[⬆ back to top](#table-of-contents)**
+**[⬆ back to top](#sumário)**
 
 </details>
 
@@ -2164,7 +2164,7 @@ var shapes = new[] { new Rectangle(), new Rectangle(), new Square() };
 RenderLargeRectangles(shapes);
 ```
 
-**[⬆ back to top](#table-of-contents)**
+**[⬆ back to top](#sumário)**
 
 </details>
 
@@ -2254,7 +2254,7 @@ public class Robot : IWorkable
 }
 ```
 
-**[⬆ back to top](#table-of-contents)**
+**[⬆ back to top](#sumário)**
 
 </details>
 
@@ -2358,7 +2358,7 @@ public class Manager
 }
 ```
 
-**[⬆ back to top](#table-of-contents)**
+**[⬆ back to top](#sumário)**
 
 </details>
 
@@ -2454,11 +2454,11 @@ public List<EmployeeData> ShowList(Employee employees)
 }
 ```
 
-**[⬆ back to top](#table-of-contents)**
+**[⬆ back to top](#sumário)**
 
 </details>
 
-## Testing
+## Testes
 
 <details>
   <summary><b>Basic concept of testing</b></summary>
@@ -2550,11 +2550,11 @@ public class MakeDotNetGreatAgainTests
 
 > Soure https://www.codingblocks.net/podcast/how-to-write-amazing-unit-tests
 
-**[⬆ back to top](#table-of-contents)**
+**[⬆ back to top](#sumário)**
 
 </details>
 
-## Concurrency
+## Concorrência
 
 <details>
   <summary><b>Use Async/Await</b></summary>
@@ -2615,11 +2615,11 @@ There are many new await-friendly techniques that should be used instead of the 
 
 > Source https://gist.github.com/jonlabelle/841146854b23b305b50fa5542f84b20c
 
-**[⬆ back to top](#table-of-contents)**
+**[⬆ back to top](#sumário)**
 
 </details>
 
-## Error Handling
+## Manipulando erros
 
 <details>
   <summary><b>Basic concept of error handling</b></summary>
@@ -2663,7 +2663,7 @@ catch (Exception ex)
 }
 ```
 
-**[⬆ back to top](#table-of-contents)**
+**[⬆ back to top](#sumário)**
 
 </details>
 
@@ -2701,7 +2701,7 @@ catch (Exception error)
 }
 ```
 
-**[⬆ back to top](#table-of-contents)**
+**[⬆ back to top](#sumário)**
 
 </details>
 
@@ -2749,7 +2749,7 @@ catch (TaskSchedulerException ex)
 }
 ```
 
-**[⬆ back to top](#table-of-contents)**
+**[⬆ back to top](#sumário)**
 
 </details>
 
@@ -2801,11 +2801,11 @@ catch (Exception error)
 }
 ```
 
-**[⬆ back to top](#table-of-contents)**
+**[⬆ back to top](#sumário)**
 
 </details>
 
-## Formatting
+## Formatando
 
 <details>
   <summary><b>Uses <i>.editorconfig</i> file</b></summary>
@@ -2971,11 +2971,11 @@ indent_size = 2
 
 ```
 
-**[⬆ back to top](#table-of-contents)**
+**[⬆ back to top](#sumário)**
 
 </details>
 
-## Comments
+## Comentários
 
 <details>
   <summary><b>Avoid positional markers</b></summary>
@@ -3040,7 +3040,7 @@ void Actions()
 };
 ```
 
-**[⬆ back to top](#table-of-contents)**
+**[⬆ back to top](#sumário)**
 
 </details>
 
@@ -3064,7 +3064,7 @@ doStuff();
 doStuff();
 ```
 
-**[⬆ back to top](#table-of-contents)**
+**[⬆ back to top](#sumário)**
 
 </details>
 
@@ -3097,7 +3097,7 @@ public int Combine(int a,int b)
 }
 ```
 
-**[⬆ back to top](#table-of-contents)**
+**[⬆ back to top](#sumário)**
 
 </details>
 
@@ -3177,13 +3177,13 @@ private int ConvertTo32BitInt(int value)
 }
 ```
 
-**[⬆ back to top](#table-of-contents)**
+**[⬆ back to top](#sumário)**
 
 </details>
 
-# Other Clean Code Resources
+# Outros Recursos de Código Limpo
 
-## Other Clean Code Lists
+## Outras Listas de Código Limpo
 
 - [clean-code-javascript](https://github.com/ryanmcdermott/clean-code-javascript) - Clean Code concepts adapted for JavaScript
 - [clean-code-php](https://github.com/jupeter/clean-code-php) - Clean Code concepts adapted for PHP
@@ -3194,16 +3194,16 @@ private int ConvertTo32BitInt(int value)
 - [clean-abap](https://github.com/SAP/styleguides) - Clean Code concepts adapted for ABAP
 - [programming-principles](https://github.com/webpro/programming-principles) - Categorized overview of Programming Principles & Patterns
 
-## Style Guides
+## Guias de Estilos
 - [Google Styleguides](https://github.com/google/styleguide) - This project holds the C++ Style Guide, Swift Style Guide, Objective-C Style Guide, Java Style Guide, Python Style Guide, R Style Guide, Shell Style Guide, HTML/CSS Style Guide, JavaScript Style Guide, AngularJS Style Guide, Common Lisp Style Guide, and Vimscript Style Guide
 
-## Tools
+## Ferramentas
 
 - [codemaid](https://github.com/codecadwallader/codemaid) - open source Visual Studio extension to cleanup and simplify our C#, C++, F#, VB, PHP, PowerShell, JSON, XAML, XML, ASP, HTML, CSS, LESS, SCSS, JavaScript and TypeScript coding
 - [Sharpen](https://github.com/sharpenrocks/Sharpen) - Visual Studio extension that intelligently introduces new C# features into your existing code base
 - [tslint-clean-code](https://github.com/Glavin001/tslint-clean-code) - TSLint rules for enforcing Clean Code
 
-## Cheatsheets
+## Dicas
 
 - [AspNetCoreDiagnosticScenarios](https://github.com/davidfowl/AspNetCoreDiagnosticScenarios) - Examples of broken patterns in ASP.NET Core applications
 - [Clean Code](cheatsheets/Clean-Code-V2.4.pdf) - The summary of [Clean Code: A Handbook of Agile Software Craftsmanship](https://www.amazon.com/dp/0132350882) book
@@ -3216,19 +3216,19 @@ private int ConvertTo32BitInt(int value)
 
 ---
 
-# Contributors
+# Contribuidores
 
 Thank you to all the people who have already contributed to `clean-code-dotnet` project
 
 <a href="https://github.com/thangchung/clean-code-dotnet/graphs/contributors"><img src="https://opencollective.com/cleancodedotnet/contributors.svg?width=890" title="contributors" alt="contributors" /></a>
 
-# Backers
+# Apoiadores
 
 Love our work and help us continue our activities? [[Become a backer](https://opencollective.com/cleancodedotnet#backer)]
 
 <a href="https://opencollective.com/cleancodedotnet#backers" target="_blank"><img src="https://opencollective.com/cleancodedotnet/backers.svg?width=890"></a>
 
-# Sponsors
+# Patrocinadores
 
 Become a sponsor and get your logo on our README on Github with a link to your site. [[Become a sponsor](https://opencollective.com/cleancodedotnet#sponsor)]
 
@@ -3238,7 +3238,7 @@ Become a sponsor and get your logo on our README on Github with a link to your s
 <a href="https://opencollective.com/cleancodedotnet/sponsor/3/website" target="_blank"><img src="https://opencollective.com/cleancodedotnet/sponsor/3/avatar.svg"></a>
 <a href="https://opencollective.com/cleancodedotnet/sponsor/4/website" target="_blank"><img src="https://opencollective.com/cleancodedotnet/sponsor/4/avatar.svg"></a>
 
-# License
+# Licença
 
 [![CC0](http://mirrors.creativecommons.org/presskit/buttons/88x31/svg/cc-zero.svg)](https://creativecommons.org/publicdomain/zero/1.0/)
 
