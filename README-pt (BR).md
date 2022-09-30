@@ -33,65 +33,65 @@ Confira meu [blog](https://medium.com/@thangchung) ou diga um oi no [Twitter](ht
 
 # Introdução
 
-![Humorous image of software quality estimation as a count of how many expletives you shout when reading code](http://www.osnews.com/images/comics/wtfm.jpg)
+![Imagem humorada da estimativa de qualidade do software ser a quantidade de quantos palavrões você grita quando lê o código](http://www.osnews.com/images/comics/wtfm.jpg)
 
-Software engineering principles, from Robert C. Martin's book [_Clean Code_](https://www.amazon.com/Clean-Code-Handbook-Software-Craftsmanship/dp/0132350882), adapted for .NET/.NET Core. This is not a style guide. It's a guide to producing readable, reusable, and refactorable software in .NET/.NET Core.
+Os princípios da engenharia de software, do livro [_Código Limpo_](https://www.amazon.com/Clean-Code-Handbook-Software-Craftsmanship/dp/0132350882) escrito por Robert C. Martin's, adaptados para .NET/.NET Core. Isto não é um guia de estilo. É um guia para produzir software em .NET/.NET Core que seja legível, reutilizável e refatorável.
 
-Not every principle herein has to be strictly followed, and even fewer will be universally agreed upon. These are guidelines and nothing more, but they are ones codified over many years of collective experience by the authors of _Clean Code_.
+Nem todos os princípios aqui contidos devem ser seguidos rigorosamente, e ainda menos serão universalmente acordados. Estas são orientações e nada mais, mas são codificadas ao longo de muitos anos de experiência coletiva pelos autores do _Código Limpo_.
 
-Inspired from [clean-code-javascript](https://github.com/ryanmcdermott/clean-code-javascript) and [clean-code-php](https://github.com/jupeter/clean-code-php) lists.
+Inspirado nas listas [clean-code-javascript](https://github.com/ryanmcdermott/clean-code-javascript) ed [clean-code-php](https://github.com/jupeter/clean-code-php).
 
 # Código Limpo .NET
 
 ## Nomeando
 
 <details>
-  <summary><b>Avoid using bad names</b></summary>
-A good name allows the code to be used by many developers. The name should reflect what it does and give context.
+  <summary><b>Evite usar nomes ruins</b></summary>
+Um bom nome permite que o código seja usado por muitos desenvolvedores. O nome deve refletir o que faz e dar contexto.
 
-**Bad:**
+**Ruim:**
 
 ```csharp
 int d;
 ```
 
-**Good:**
+**Bom:**
 
 ```csharp
 int daySinceModification;
 ```
 
-**[⬆ back to top](#sumário)**
+**[⬆ de volta ao topo](#sumário)**
 
 </details>
 
 <details>
-  <summary><b>Avoid Misleading Names</b></summary>
+  <summary><b>Evite nomes enganosos</b></summary>
 
-Name the variable to reflect what it is used for.
+Nomeie a variável para refletir para que ela é usada.
 
-**Bad:**
+**Ruim:**
 
 ```csharp
 var dataFromDb = db.GetFromService().ToList();
 ```
 
-**Good:**
+**Bom:**
 
 ```csharp
 var listOfEmployee = _employeeService.GetEmployees().ToList();
 ```
 
-**[⬆ back to top](#sumário)**
+**[⬆ de volta ao topo](#sumário)**
 
 </details>
 
 <details>
-  <summary><b>Avoid Hungarian notation</b></summary>
+  <summary><b>Evite a notação húngara</b></summary>
 
-Hungarian Notation restates the type which is already present in the declaration. This is pointless since modern IDEs will identify the type.
+A notação húngara reafirma o tipo que já está presente na declaração. Isso é inútil, pois os IDEs modernos identificarão o tipo.
 
-**Bad:**
+**Ruim:**
 
 ```csharp
 int iCounter;
@@ -99,7 +99,7 @@ string strFullName;
 DateTime dModifiedDate;
 ```
 
-**Good:**
+**Bom:**
 
 ```csharp
 int counter;
@@ -107,38 +107,40 @@ string fullName;
 DateTime modifiedDate;
 ```
 
-Hungarian Notation should also not be used in paramaters.
+A notação húngara também não deve ser usada em parâmetros.
 
-**Bad:**
+**Ruim:**
 
 ```csharp
 public bool IsShopOpen(string pDay, int pAmount)
 {
-    // some logic
+    // alguma lógica
 }
 ```
 
-**Good:**
+**Bom:**
 
 ```csharp
 public bool IsShopOpen(string day, int amount)
 {
-    // some logic
+    // alguma lógica
 }
 ```
 
-**[⬆ back to top](#sumário)**
+**[⬆ de volta ao topo](#sumário)**
 
 </details>
 
 <details>
-  <summary><b>Use consistent capitalization</b></summary>
+  <summary><b>Use letras maiúsculas consistentes</b></summary>
 
 Capitalization tells you a lot about your variables,
 functions, etc. These rules are subjective, so your team can choose whatever
 they want. The point is, no matter what you all choose, just be consistent.
 
-**Bad:**
+A capitalização diz muito sobre suas variáveis, funções, etc. Essas regras são subjetivas, então sua equipe pode escolher qual eles queiram. O ponto é, não importa o que você escolher, apenas seja consistente.
+
+**Ruim:**
 
 ```csharp
 const int DAYS_IN_WEEK = 7;
@@ -154,7 +156,7 @@ class animal {}
 class Alpaca {}
 ```
 
-**Good:**
+**Bom:**
 
 ```csharp
 const int DaysInWeek = 7;
@@ -170,26 +172,26 @@ class Animal {}
 class Alpaca {}
 ```
 
-**[⬆ back to top](#sumário)**
+**[⬆ de volta ao topo](#sumário)**
 
 </details>
 
 <details>
-  <summary><b>Use pronounceable names</b></summary>
+  <summary><b>Use nomes pronunciáveis</b></summary>
 
-It will take time to investigate the meaning of the variables and functions when they are not pronounceable.
+Levará tempo para investigar o significado das variáveis e funções quando elas não forem pronunciáveis.
 
-**Bad:**
+**Ruim:**
 
 ```csharp
 public class Employee
 {
-    public Datetime sWorkDate { get; set; } // what the heck is this
-    public Datetime modTime { get; set; } // same here
+    public Datetime sWorkDate { get; set; } // Que diabos é isto
+    public Datetime modTime { get; set; } // mesma coisa aqui
 }
 ```
 
-**Good:**
+**Bom:**
 
 ```csharp
 public class Employee
@@ -199,58 +201,58 @@ public class Employee
 }
 ```
 
-**[⬆ back to top](#sumário)**
+**[⬆ de volta ao topo](#sumário)**
 
 </details>
 
 <details>
-  <summary><b>Use Camelcase notation</b></summary>
+  <summary><b>Use a notação Camelcase</b></summary>
 
-Use [Camelcase Notation](https://en.wikipedia.org/wiki/Camel_case) for variable and method paramaters.
+Use [notação Camelcase](https://en.wikipedia.org/wiki/Camel_case) para variável e parâmetro de método.
 
-**Bad:**
+**Ruim:**
 
 ```csharp
 var employeephone;
 
 public double CalculateSalary(int workingdays, int workinghours)
 {
-    // some logic
+    // algum lógica
 }
 ```
 
-**Good:**
+**Bom:**
 
 ```csharp
 var employeePhone;
 
 public double CalculateSalary(int workingDays, int workingHours)
 {
-    // some logic
+    // algum lógica
 }
 ```
 
-**[⬆ back to top](#sumário)**
+**[⬆ de volta ao topo](#sumário)**
 
 </details>
 
 <details>
-  <summary><b>Use domain name</b></summary>
+  <summary><b>Usar nome de domínio</b></summary>
 
-People who read your code are also programmers. Naming things right will help everyone be on the same page. We don't want to take time to explain to everyone what a variable or function is for.
+As pessoas que lêem seu código também são programadores. Nomear as coisas corretamente ajudará todos a estarem na mesma página. Não queremos perder tempo explicando a todos para que serve uma variável ou função.
 
-**Good**
+**Bom:**
 
 ```csharp
 public class SingleObject
 {
-    // create an object of SingleObject
+    // cria um objeto do tipo SingleObject
     private static SingleObject _instance = new SingleObject();
 
-    // make the constructor private so that this class cannot be instantiated
+    // tornar o construtor privado para que esta classe não possa ser instanciada
     private SingleObject() {}
 
-    // get the only object available
+    //Obtenha o único objeto disponível
     public static SingleObject GetInstance()
     {
         return _instance;
@@ -264,18 +266,18 @@ public class SingleObject
 
 public static void main(String[] args)
 {
-    // illegal construct
+    // construção ilegal
     // var object = new SingleObject();
 
-    // Get the only object available
+    // Obtenha o único objeto disponível
     var singletonObject = SingleObject.GetInstance();
 
-    // show the message
+    // exibe amensagem
     singletonObject.ShowMessage();
 }
 ```
 
-**[⬆ back to top](#sumário)**
+**[⬆ de volta ao topo](#sumário)**
 
 </details>
 
@@ -286,7 +288,7 @@ public static void main(String[] args)
 
 Too many if else statements can make the code hard to follow. **Explicit is better than implicit**.
 
-**Bad:**
+**Ruim:**
 
 ```csharp
 public bool IsShopOpen(string day)
@@ -319,7 +321,7 @@ public bool IsShopOpen(string day)
 }
 ```
 
-**Good:**
+**Bom:**
 
 ```csharp
 public bool IsShopOpen(string day)
@@ -334,7 +336,7 @@ public bool IsShopOpen(string day)
 }
 ```
 
-**Bad:**
+**Ruim:**
 
 ```csharp
 public long Fibonacci(int n)
@@ -364,7 +366,7 @@ public long Fibonacci(int n)
 }
 ```
 
-**Good:**
+**Bom:**
 
 ```csharp
 public long Fibonacci(int n)
@@ -388,7 +390,7 @@ public long Fibonacci(int n)
 }
 ```
 
-**[⬆ back to top](#sumário)**
+**[⬆ de volta ao topo](#sumário)**
 
 </details>
 
@@ -397,7 +399,7 @@ public long Fibonacci(int n)
 
 Don’t force the reader of your code to translate what the variable means. **Explicit is better than implicit**.
 
-**Bad:**
+**Ruim:**
 
 ```csharp
 var l = new[] { "Austin", "New York", "San Francisco" };
@@ -416,7 +418,7 @@ for (var i = 0; i < l.Count(); i++)
 }
 ```
 
-**Good:**
+**Bom:**
 
 ```csharp
 var locations = new[] { "Austin", "New York", "San Francisco" };
@@ -433,7 +435,7 @@ foreach (var location in locations)
 }
 ```
 
-**[⬆ back to top](#sumário)**
+**[⬆ de volta ao topo](#sumário)**
 
 </details>
 
@@ -442,7 +444,7 @@ foreach (var location in locations)
 
 Magic strings are string values that are specified directly within application code that have an impact on the application’s behavior. Frequently, such strings will end up being duplicated within the system, and since they cannot automatically be updated using refactoring tools, they become a common source of bugs when changes are made to some strings but not others.
 
-**Bad**
+**Ruim:**
 
 ```csharp
 if (userRole == "Admin")
@@ -451,7 +453,7 @@ if (userRole == "Admin")
 }
 ```
 
-**Good**
+**Bom:**
 
 ```csharp
 const string ADMIN_ROLE = "Admin"
@@ -463,7 +465,7 @@ if (userRole == ADMIN_ROLE)
 
 Using this we only have to change in centralize place and others will adapt it.
 
-**[⬆ back to top](#sumário)**
+**[⬆ de volta ao topo](#sumário)**
 
 </details>
 
@@ -472,7 +474,7 @@ Using this we only have to change in centralize place and others will adapt it.
 
 If your class/object name tells you something, don't repeat that in your variable name.
 
-**Bad:**
+**Ruim:**
 
 ```csharp
 public class Car
@@ -485,7 +487,7 @@ public class Car
 }
 ```
 
-**Good:**
+**Bom:**
 
 ```csharp
 public class Car
@@ -498,33 +500,33 @@ public class Car
 }
 ```
 
-**[⬆ back to top](#sumário)**
+**[⬆ de volta ao topo](#sumário)**
 
 </details>
 
 <details>
   <summary><b>Use meaningful and pronounceable variable names</b></summary>
 
-**Bad:**
+**Ruim:**
 
 ```csharp
 var ymdstr = DateTime.UtcNow.ToString("MMMM dd, yyyy");
 ```
 
-**Good:**
+**Bom:**
 
 ```csharp
 var currentDate = DateTime.UtcNow.ToString("MMMM dd, yyyy");
 ```
 
-**[⬆ back to top](#sumário)**
+**[⬆ de volta ao topo](#sumário)**
 
 </details>
 
 <details>
   <summary><b>Use the same vocabulary for the same type of variable</b></summary>
 
-**Bad:**
+**Ruim:**
 
 ```csharp
 GetUserInfo();
@@ -533,13 +535,13 @@ GetUserRecord();
 GetUserProfile();
 ```
 
-**Good:**
+**Bom:**
 
 ```csharp
 GetUser();
 ```
 
-**[⬆ back to top](#sumário)**
+**[⬆ de volta ao topo](#sumário)**
 
 </details>
 
@@ -548,7 +550,7 @@ GetUser();
 
 We will read more code than we will ever write. It's important that the code we do write is readable and searchable. By _not_ naming variables that end up being meaningful for understanding our program, we hurt our readers. Make your names searchable.
 
-**Bad:**
+**Ruim:**
 
 ```csharp
 // What the heck is data for?
@@ -564,7 +566,7 @@ Console.Write("JSON form of Data object: ");
 Console.WriteLine(sr1.ReadToEnd());
 ```
 
-**Good:**
+**Bom:**
 
 ```csharp
 var person = new Person
@@ -583,14 +585,14 @@ Console.Write("JSON form of Data object: ");
 Console.WriteLine(sr2.ReadToEnd());
 ```
 
-**[⬆ back to top](#sumário)**
+**[⬆ de volta ao topo](#sumário)**
 
 </details>
 
 <details>
   <summary><b>Use searchable names (part 2)</b></summary>
 
-**Bad:**
+**Ruim:**
 
 ```csharp
 var data = new { Name = "John", Age = 42, PersonAccess = 4};
@@ -602,7 +604,7 @@ if (data.PersonAccess == 4)
 }
 ```
 
-**Good:**
+**Bom:**
 
 ```csharp
 public enum PersonAccess : int
@@ -626,14 +628,14 @@ if (person.PersonAccess == PersonAccess.ACCESS_UPDATE)
 }
 ```
 
-**[⬆ back to top](#sumário)**
+**[⬆ de volta ao topo](#sumário)**
 
 </details>
 
 <details>
   <summary><b>Use explanatory variables</b></summary>
 
-**Bad:**
+**Ruim:**
 
 ```csharp
 const string Address = "One Infinite Loop, Cupertino 95014";
@@ -645,7 +647,7 @@ if (matches[0].Success == true && matches[1].Success == true)
 }
 ```
 
-**Good:**
+**Bom:**
 
 Decrease dependence on regex by naming subpatterns.
 
@@ -661,7 +663,7 @@ if(cityGroup.Success == true && zipCodeGroup.Success == true)
 }
 ```
 
-**[⬆ back to top](#sumário)**
+**[⬆ de volta ao topo](#sumário)**
 
 </details>
 
@@ -682,7 +684,7 @@ public void CreateMicrobrewery(string name = null)
 }
 ```
 
-**Good:**
+**Bom:**
 
 ```csharp
 public void CreateMicrobrewery(string breweryName = "Hipster Brew Co.")
@@ -691,7 +693,7 @@ public void CreateMicrobrewery(string breweryName = "Hipster Brew Co.")
 }
 ```
 
-**[⬆ back to top](#sumário)**
+**[⬆ de volta ao topo](#sumário)**
 
 </details>
 
@@ -707,7 +709,7 @@ Now, you do need to have side effects in a program on occasion. Like the previou
 The main point is to avoid common pitfalls like sharing state between objects without any structure, using mutable data types that can be written to by anything, and not centralizing where your side effects occur. If you can do this, you will be happier
 than the vast majority of other programmers.
 
-**Bad:**
+**Ruim:**
 
 ```csharp
 // Global variable referenced by following function.
@@ -725,7 +727,7 @@ SplitAndEnrichFullName();
 Console.WriteLine(name); // His first name is Ryan, and his last name is McDermott
 ```
 
-**Good:**
+**Bom:**
 
 ```csharp
 public string SplitAndEnrichFullName(string name)
@@ -741,14 +743,14 @@ Console.WriteLine(name); // Ryan McDermott
 Console.WriteLine(fullName); // His first name is Ryan, and his last name is McDermott
 ```
 
-**[⬆ back to top](#sumário)**
+**[⬆ de volta ao topo](#sumário)**
 
 </details>
 
 <details>
   <summary><b>Avoid negative conditionals</b></summary>
 
-**Bad:**
+**Ruim:**
 
 ```csharp
 public bool IsDOMNodeNotPresent(string node)
@@ -762,7 +764,7 @@ if (!IsDOMNodeNotPresent(node))
 }
 ```
 
-**Good:**
+**Bom:**
 
 ```csharp
 public bool IsDOMNodePresent(string node)
@@ -776,7 +778,7 @@ if (IsDOMNodePresent(node))
 }
 ```
 
-**[⬆ back to top](#sumário)**
+**[⬆ de volta ao topo](#sumário)**
 
 </details>
 
@@ -786,7 +788,7 @@ if (IsDOMNodePresent(node))
 This seems like an impossible task. Upon first hearing this, most people say, "how am I supposed to do anything without an `if` statement?" The answer is that you can use polymorphism to achieve the same task in many cases. The second question is usually, "well that's great but why would I want to do that?" The answer is a previous clean code concept we learned: a function should only do
 one thing. When you have classes and functions that have `if` statements, you are telling your user that your function does more than one thing. Remember, just do one thing.
 
-**Bad:**
+**Ruim:**
 
 ```csharp
 class Airplane
@@ -808,7 +810,7 @@ class Airplane
 }
 ```
 
-**Good:**
+**Bom:**
 
 ```csharp
 interface IAirplane
@@ -849,14 +851,14 @@ class Cessna : IAirplane
 }
 ```
 
-**[⬆ back to top](#sumário)**
+**[⬆ de volta ao topo](#sumário)**
 
 </details>
 
 <details>
   <summary><b>Avoid type-checking (part 1)</b></summary>
 
-**Bad:**
+**Ruim:**
 
 ```csharp
 public Path TravelToTexas(object vehicle)
@@ -872,7 +874,7 @@ public Path TravelToTexas(object vehicle)
 }
 ```
 
-**Good:**
+**Bom:**
 
 ```csharp
 public Path TravelToTexas(Traveler vehicle)
@@ -898,14 +900,14 @@ public Path TravelToTexas(object vehicle)
 }
 ```
 
-**[⬆ back to top](#sumário)**
+**[⬆ de volta ao topo](#sumário)**
 
 </details>
 
 <details>
   <summary><b>Avoid type-checking (part 2)</b></summary>
 
-**Bad:**
+**Ruim:**
 
 ```csharp
 public int Combine(dynamic val1, dynamic val2)
@@ -920,7 +922,7 @@ public int Combine(dynamic val1, dynamic val2)
 }
 ```
 
-**Good:**
+**Bom:**
 
 ```csharp
 public int Combine(int val1, int val2)
@@ -929,7 +931,7 @@ public int Combine(int val1, int val2)
 }
 ```
 
-**[⬆ back to top](#sumário)**
+**[⬆ de volta ao topo](#sumário)**
 
 </details>
 
@@ -938,7 +940,7 @@ public int Combine(int val1, int val2)
 
 A flag indicates that the method has more than one responsibility. It is best if the method only has a single responsibility. Split the method into two if a boolean parameter adds multiple responsibilities to the method.
 
-**Bad:**
+**Ruim:**
 
 ```csharp
 public void CreateFile(string name, bool temp = false)
@@ -954,7 +956,7 @@ public void CreateFile(string name, bool temp = false)
 }
 ```
 
-**Good:**
+**Bom:**
 
 ```csharp
 public void CreateFile(string name)
@@ -968,7 +970,7 @@ public void CreateTempFile(string name)
 }
 ```
 
-**[⬆ back to top](#sumário)**
+**[⬆ de volta ao topo](#sumário)**
 
 </details>
 
@@ -978,7 +980,7 @@ public void CreateTempFile(string name)
 Polluting globals is a bad practice in many languages because you could clash with another library and the user of your API would be none-the-wiser until they get an exception in production. Let's think about an example: what if you wanted to have configuration array.
 You could write global function like `Config()`, but it could clash with another library that tried to do the same thing.
 
-**Bad:**
+**Ruim:**
 
 ```csharp
 public Dictionary<string, string> Config()
@@ -989,7 +991,7 @@ public Dictionary<string, string> Config()
 }
 ```
 
-**Good:**
+**Bom:**
 
 ```csharp
 class Configuration
@@ -1018,7 +1020,7 @@ var configuration = new Configuration(new Dictionary<string, string>() {
 
 And now you must use instance of `Configuration` in your application.
 
-**[⬆ back to top](#sumário)**
+**[⬆ de volta ao topo](#sumário)**
 
 </details>
 
@@ -1034,7 +1036,7 @@ Singleton is an [anti-pattern](https://en.wikipedia.org/wiki/Singleton_pattern).
 
 There is also very good thoughts by [Misko Hevery](http://misko.hevery.com/about/) about the [root of problem](http://misko.hevery.com/2008/08/25/root-cause-of-singletons/).
 
-**Bad:**
+**Ruim:**
 
 ```csharp
 class DBConnection
@@ -1062,7 +1064,7 @@ class DBConnection
 var singleton = DBConnection.GetInstance();
 ```
 
-**Good:**
+**Bom:**
 
 ```csharp
 class DBConnection
@@ -1085,7 +1087,7 @@ var connection = new DBConnection(options);
 
 And now you must use instance of `DBConnection` in your application.
 
-**[⬆ back to top](#sumário)**
+**[⬆ de volta ao topo](#sumário)**
 
 </details>
 
@@ -1096,7 +1098,7 @@ Limiting the amount of function parameters is incredibly important because it ma
 
 Zero arguments is the ideal case. One or two arguments is ok, and three should be avoided. Anything more than that should be consolidated. Usually, if you have more than two arguments then your function is trying to do too much. In cases where it's not, most of the time a higher-level object will suffice as an argument.
 
-**Bad:**
+**Ruim:**
 
 ```csharp
 public void CreateMenu(string title, string body, string buttonText, bool cancellable)
@@ -1105,7 +1107,7 @@ public void CreateMenu(string title, string body, string buttonText, bool cancel
 }
 ```
 
-**Good:**
+**Bom:**
 
 ```csharp
 public class MenuConfig
@@ -1130,7 +1132,7 @@ public void CreateMenu(MenuConfig config)
 }
 ```
 
-**[⬆ back to top](#sumário)**
+**[⬆ de volta ao topo](#sumário)**
 
 </details>
 
@@ -1140,7 +1142,7 @@ public void CreateMenu(MenuConfig config)
 This is by far the most important rule in software engineering. When functions do more than one thing, they are harder to compose, test, and reason about. When you can isolate a function to just one action, they can be refactored easily and your code will read much
 cleaner. If you take nothing else away from this guide other than this, you'll be ahead of many developers.
 
-**Bad:**
+**Ruim:**
 
 ```csharp
 public void SendEmailToListOfClients(string[] clients)
@@ -1156,7 +1158,7 @@ public void SendEmailToListOfClients(string[] clients)
 }
 ```
 
-**Good:**
+**Bom:**
 
 ```csharp
 public void SendEmailToListOfClients(string[] clients)
@@ -1171,14 +1173,14 @@ public List<Client> GetActiveClients(string[] clients)
 }
 ```
 
-**[⬆ back to top](#sumário)**
+**[⬆ de volta ao topo](#sumário)**
 
 </details>
 
 <details>
   <summary><b>Function names should say what they do</b></summary>
 
-**Bad:**
+**Ruim:**
 
 ```csharp
 public class Email
@@ -1196,7 +1198,7 @@ var message = new Email(...);
 message.Handle();
 ```
 
-**Good:**
+**Bom:**
 
 ```csharp
 public class Email
@@ -1214,7 +1216,7 @@ var message = new Email(...);
 message.Send();
 ```
 
-**[⬆ back to top](#sumário)**
+**[⬆ de volta ao topo](#sumário)**
 
 </details>
 
@@ -1225,7 +1227,7 @@ message.Send();
 
 When you have more than one level of abstraction your function is usually doing too much. Splitting up functions leads to reusability and easier testing.
 
-**Bad:**
+**Ruim:**
 
 ```csharp
 public string ParseBetterJSAlternative(string code)
@@ -1304,7 +1306,7 @@ public string ParseBetterJSAlternative(string code)
 }
 ```
 
-**Good:**
+**Bom:**
 
 The best solution is move out the dependencies of `ParseBetterJSAlternative()` function.
 
@@ -1368,7 +1370,7 @@ class BetterJSAlternative
 }
 ```
 
-**[⬆ back to top](#sumário)**
+**[⬆ de volta ao topo](#sumário)**
 
 </details>
 
@@ -1377,7 +1379,7 @@ class BetterJSAlternative
 
 If a function calls another, keep those functions vertically close in the source file. Ideally, keep the caller right above the callee. We tend to read code from top-to-bottom, like a newspaper. Because of this, make your code read that way.
 
-**Bad:**
+**Ruim:**
 
 ```csharp
 class PerformanceReview
@@ -1427,7 +1429,7 @@ var  review = new PerformanceReview(employee);
 review.PerfReview();
 ```
 
-**Good:**
+**Bom:**
 
 ```csharp
 class PerformanceReview
@@ -1478,14 +1480,14 @@ var review = new PerformanceReview(employee);
 review.PerfReview();
 ```
 
-**[⬆ back to top](#sumário)**
+**[⬆ de volta ao topo](#sumário)**
 
 </details>
 
 <details>
   <summary><b>Encapsulate conditionals</b></summary>
 
-**Bad:**
+**Ruim:**
 
 ```csharp
 if (article.state == "published")
@@ -1494,7 +1496,7 @@ if (article.state == "published")
 }
 ```
 
-**Good:**
+**Bom:**
 
 ```csharp
 if (article.IsPublished())
@@ -1503,7 +1505,7 @@ if (article.IsPublished())
 }
 ```
 
-**[⬆ back to top](#sumário)**
+**[⬆ de volta ao topo](#sumário)**
 
 </details>
 
@@ -1512,7 +1514,7 @@ if (article.IsPublished())
 
 Dead code is just as bad as duplicate code. There's no reason to keep it in your codebase. If it's not being called, get rid of it! It will still be safe in your version history if you still need it.
 
-**Bad:**
+**Ruim:**
 
 ```csharp
 public void OldRequestModule(string url)
@@ -1529,7 +1531,7 @@ var request = NewRequestModule(requestUrl);
 InventoryTracker("apples", request, "www.inventory-awesome.io");
 ```
 
-**Good:**
+**Bom:**
 
 ```csharp
 public void RequestModule(string url)
@@ -1541,7 +1543,7 @@ var request = RequestModule(requestUrl);
 InventoryTracker("apples", request, "www.inventory-awesome.io");
 ```
 
-**[⬆ back to top](#sumário)**
+**[⬆ de volta ao topo](#sumário)**
 
 </details>
 
@@ -1562,7 +1564,7 @@ Using it, you can control properties modification on an object.
 
 Additionally, this is part of Open/Closed principle, from object-oriented design principles.
 
-**Bad:**
+**Ruim:**
 
 ```csharp
 class BankAccount
@@ -1576,7 +1578,7 @@ var bankAccount = new BankAccount();
 bankAccount.Balance -= 100;
 ```
 
-**Good:**
+**Bom:**
 
 ```csharp
 class BankAccount
@@ -1619,14 +1621,14 @@ bankAccount.WithdrawBalance(price);
 balance = bankAccount.Balance;
 ```
 
-**[⬆ back to top](#sumário)**
+**[⬆ de volta ao topo](#sumário)**
 
 </details>
 
 <details>
   <summary><b>Make objects have private/protected members</b></summary>
 
-**Bad:**
+**Ruim:**
 
 ```csharp
 class Employee
@@ -1643,7 +1645,7 @@ var employee = new Employee("John Doe");
 Console.WriteLine(employee.Name); // Employee name: John Doe
 ```
 
-**Good:**
+**Bom:**
 
 ```csharp
 class Employee
@@ -1660,7 +1662,7 @@ var employee = new Employee("John Doe");
 Console.WriteLine(employee.Name); // Employee name: John Doe
 ```
 
-**[⬆ back to top](#sumário)**
+**[⬆ de volta ao topo](#sumário)**
 
 </details>
 
@@ -1672,7 +1674,7 @@ Console.WriteLine(employee.Name); // Employee name: John Doe
 This pattern is very useful and commonly used in many libraries. It allows your code to be expressive, and less verbose.
 For that reason, use method chaining and take a look at how clean your code will be.
 
-**Good:**
+**Bom:**
 
 ```csharp
 public static class ListExtensions
@@ -1726,7 +1728,7 @@ internal static void ListFluentExtensions()
 }
 ```
 
-**[⬆ back to top](#sumário)**
+**[⬆ de volta ao topo](#sumário)**
 
 </details>
 
@@ -1745,7 +1747,7 @@ depends on your problem at hand, but this is a decent list of when inheritance m
 2. You can reuse code from the base classes (Humans can move like all animals).
 3. You want to make global changes to derived classes by changing a base class (Change the caloric expenditure of all animals when they move).
 
-**Bad:**
+**Ruim:**
 
 ```csharp
 class Employee
@@ -1779,7 +1781,7 @@ class EmployeeTaxData : Employee
 }
 ```
 
-**Good:**
+**Bom:**
 
 ```csharp
 class EmployeeTaxData
@@ -1817,7 +1819,7 @@ class Employee
 }
 ```
 
-**[⬆ back to top](#sumário)**
+**[⬆ de volta ao topo](#sumário)**
 
 </details>
 
@@ -1843,7 +1845,7 @@ As stated in Clean Code, "There should never be more than one reason for a class
 
 It's important because if too much functionality is in one class and you modify a piece of it, it can be difficult to understand how that will affect other dependent modules in your codebase.
 
-**Bad:**
+**Ruim:**
 
 ```csharp
 class UserSettings
@@ -1870,7 +1872,7 @@ class UserSettings
 }
 ```
 
-**Good:**
+**Bom:**
 
 ```csharp
 class UserAuth
@@ -1909,7 +1911,7 @@ class UserSettings
 }
 ```
 
-**[⬆ back to top](#sumário)**
+**[⬆ de volta ao topo](#sumário)**
 
 </details>
 
@@ -1918,7 +1920,7 @@ class UserSettings
 
 As stated by Bertrand Meyer, "software entities (classes, modules, functions, etc.) should be open for extension, but closed for modification." What does that mean though? This principle basically states that you should allow users to add new functionalities without changing existing code.
 
-**Bad:**
+**Ruim:**
 
 ```csharp
 abstract class AdapterBase
@@ -1982,7 +1984,7 @@ class HttpRequester : AdapterBase
 }
 ```
 
-**Good:**
+**Bom:**
 
 ```csharp
 interface IAdapter
@@ -2022,7 +2024,7 @@ class HttpRequester
 }
 ```
 
-**[⬆ back to top](#sumário)**
+**[⬆ de volta ao topo](#sumário)**
 
 </details>
 
@@ -2035,7 +2037,7 @@ etc.)." That's an even scarier definition.
 The best explanation for this is if you have a parent class and a child class, then the base class and child class can be used interchangeably without getting incorrect results. This might still be confusing, so let's take a look at the classic Square-Rectangle example. Mathematically, a square is a rectangle, but if you model it using the "is-a" relationship via inheritance, you quickly
 get into trouble.
 
-**Bad:**
+**Ruim:**
 
 ```csharp
 class Rectangle
@@ -2092,7 +2094,7 @@ var rectangles = new[] { new Rectangle(), new Rectangle(), new Square() };
 RenderLargeRectangles(rectangles);
 ```
 
-**Good:**
+**Bom:**
 
 ```csharp
 abstract class ShapeBase
@@ -2164,7 +2166,7 @@ var shapes = new[] { new Rectangle(), new Rectangle(), new Square() };
 RenderLargeRectangles(shapes);
 ```
 
-**[⬆ back to top](#sumário)**
+**[⬆ de volta ao topo](#sumário)**
 
 </details>
 
@@ -2176,7 +2178,7 @@ ISP states that "Clients should not be forced to depend upon interfaces that the
 A good example to look at that demonstrates this principle is for
 classes that require large settings objects. Not requiring clients to setup huge amounts of options is beneficial, because most of the time they won't need all of the settings. Making them optional helps prevent having a "fat interface".
 
-**Bad:**
+**Ruim:**
 
 ```csharp
 public interface IEmployee
@@ -2212,7 +2214,7 @@ public class Robot : IEmployee
 }
 ```
 
-**Good:**
+**Bom:**
 
 Not every worker is an employee, but every employee is an worker.
 
@@ -2254,7 +2256,7 @@ public class Robot : IWorkable
 }
 ```
 
-**[⬆ back to top](#sumário)**
+**[⬆ de volta ao topo](#sumário)**
 
 </details>
 
@@ -2269,7 +2271,7 @@ This principle states two essential things:
 This can be hard to understand at first, but if you've worked with .NET/.NET Core framework, you've seen an implementation of this principle in the form of [Dependency Injection](https://martinfowler.com/articles/injection.html) (DI). While they are not identical concepts, DIP keeps high-level modules from knowing the details of its low-level modules and setting them up.
 It can accomplish this through DI. A huge benefit of this is that it reduces the coupling between modules. Coupling is a very bad development pattern because it makes your code hard to refactor.
 
-**Bad:**
+**Ruim:**
 
 ```csharp
 public abstract class EmployeeBase
@@ -2315,7 +2317,7 @@ public class Manager
 }
 ```
 
-**Good:**
+**Bom:**
 
 ```csharp
 public interface IEmployee
@@ -2358,7 +2360,7 @@ public class Manager
 }
 ```
 
-**[⬆ back to top](#sumário)**
+**[⬆ de volta ao topo](#sumário)**
 
 </details>
 
@@ -2375,7 +2377,7 @@ Oftentimes you have duplicate code because you have two or more slightly differe
 
 Getting the abstraction right is critical, that's why you should follow the SOLID principles laid out in the [Classes](#classes) section. Bad abstractions can be worse than duplicate code, so be careful! Having said this, if you can make a good abstraction, do it! Don't repeat yourself, otherwise you'll find yourself updating multiple places anytime you want to change one thing.
 
-**Bad:**
+**Ruim:**
 
 ```csharp
 public List<EmployeeData> ShowDeveloperList(Developers developers)
@@ -2414,7 +2416,7 @@ public List<ManagerData> ShowManagerList(Manager managers)
 }
 ```
 
-**Good:**
+**Bom:**
 
 ```csharp
 public List<EmployeeData> ShowList(Employee employees)
@@ -2454,7 +2456,7 @@ public List<EmployeeData> ShowList(Employee employees)
 }
 ```
 
-**[⬆ back to top](#sumário)**
+**[⬆ de volta ao topo](#sumário)**
 
 </details>
 
@@ -2475,7 +2477,7 @@ There's no excuse to not write tests. There's [plenty of good .NET test framewor
 
 Ensures that your tests are laser focused and not testing miscellaenous (non-related) things, forces [AAA patern](http://wiki.c2.com/?ArrangeActAssert) used to make your codes more clean and readable.
 
-**Bad:**
+**Ruim:**
 
 ```csharp
 
@@ -2500,7 +2502,7 @@ public class MakeDotNetGreatAgainTests
 
 ```
 
-**Good:**
+**Bom:**
 
 ```csharp
 
@@ -2550,7 +2552,7 @@ public class MakeDotNetGreatAgainTests
 
 > Soure https://www.codingblocks.net/podcast/how-to-write-amazing-unit-tests
 
-**[⬆ back to top](#sumário)**
+**[⬆ de volta ao topo](#sumário)**
 
 </details>
 
@@ -2615,7 +2617,7 @@ There are many new await-friendly techniques that should be used instead of the 
 
 > Source https://gist.github.com/jonlabelle/841146854b23b305b50fa5542f84b20c
 
-**[⬆ back to top](#sumário)**
+**[⬆ de volta ao topo](#sumário)**
 
 </details>
 
@@ -2635,7 +2637,7 @@ If you need to re-throw an exception after catching it, use just 'throw'
 By using this, you will save the stack trace. But in the bad option below,
 you will lost the stack trace.
 
-**Bad:**
+**Ruim:**
 
 ```csharp
 try
@@ -2649,7 +2651,7 @@ catch (Exception ex)
 }
 ```
 
-**Good:**
+**Bom:**
 
 ```csharp
 try
@@ -2663,7 +2665,7 @@ catch (Exception ex)
 }
 ```
 
-**[⬆ back to top](#sumário)**
+**[⬆ de volta ao topo](#sumário)**
 
 </details>
 
@@ -2672,7 +2674,7 @@ catch (Exception ex)
 
 Doing nothing with a caught error doesn't give you the ability to ever fix or react to said error. Throwing the error isn't much better as often times it can get lost in a sea of things printed to the console. If you wrap any bit of code in a `try/catch` it means you think an error may occur there and therefore you should have a plan, or create a code path, for when it occurs.
 
-**Bad:**
+**Ruim:**
 
 ```csharp
 try
@@ -2685,7 +2687,7 @@ catch (Exception ex)
 }
 ```
 
-**Good:**
+**Bom:**
 
 ```csharp
 try
@@ -2701,7 +2703,7 @@ catch (Exception error)
 }
 ```
 
-**[⬆ back to top](#sumário)**
+**[⬆ de volta ao topo](#sumário)**
 
 </details>
 
@@ -2711,7 +2713,7 @@ catch (Exception error)
 If you need to take action according to type of the exception,
 you better use multiple catch block for exception handling.
 
-**Bad:**
+**Ruim:**
 
 ```csharp
 try
@@ -2732,7 +2734,7 @@ catch (Exception ex)
 }
 ```
 
-**Good:**
+**Bom:**
 
 ```csharp
 try
@@ -2749,7 +2751,7 @@ catch (TaskSchedulerException ex)
 }
 ```
 
-**[⬆ back to top](#sumário)**
+**[⬆ de volta ao topo](#sumário)**
 
 </details>
 
@@ -2759,7 +2761,7 @@ catch (TaskSchedulerException ex)
 C# allows the exception to be rethrown in a catch block using the `throw` keyword. It is a bad practice to throw a caught exception using `throw e;`. This statement resets the stack trace. Instead use `throw;`. This will keep the stack trace and provide a deeper insight about the exception.
 Another option is to use a custom exception. Simply instantiate a new exception and set its inner exception property to the caught exception with throw `new CustomException("some info", e);`. Adding information to an exception is a good practice as it will help with debugging. However, if the objective is to log an exception then use `throw;` to pass the buck to the caller.
 
-**Bad:**
+**Ruim:**
 
 ```csharp
 try
@@ -2773,7 +2775,7 @@ catch (Exception ex)
 }
 ```
 
-**Good:**
+**Bom:**
 
 ```csharp
 try
@@ -2787,7 +2789,7 @@ catch (Exception error)
 }
 ```
 
-**Good:**
+**Bom:**
 
 ```csharp
 try
@@ -2801,7 +2803,7 @@ catch (Exception error)
 }
 ```
 
-**[⬆ back to top](#sumário)**
+**[⬆ de volta ao topo](#sumário)**
 
 </details>
 
@@ -2810,11 +2812,11 @@ catch (Exception error)
 <details>
   <summary><b>Uses <i>.editorconfig</i> file</b></summary>
 
-**Bad:**
+**Ruim:**
 
 Has many code formatting styles in the project. For example, indent style is `space` and `tab` mixed in the project.
 
-**Good:**
+**Bom:**
 
 Define and maintain consistent code style in your codebase with the use of an `.editorconfig` file
 
@@ -2971,7 +2973,7 @@ indent_size = 2
 
 ```
 
-**[⬆ back to top](#sumário)**
+**[⬆ de volta ao topo](#sumário)**
 
 </details>
 
@@ -2982,7 +2984,7 @@ indent_size = 2
 
 They usually just add noise. Let the functions and variable names along with the proper indentation and formatting give the visual structure to your code.
 
-**Bad:**
+**Ruim:**
 
 ```csharp
 ////////////////////////////////////////////////////////////////////////////////
@@ -3003,7 +3005,7 @@ void Actions()
 };
 ```
 
-**Bad:**
+**Ruim:**
 
 ```csharp
 
@@ -3025,7 +3027,7 @@ void Actions() {
 #endregion
 ```
 
-**Good:**
+**Bom:**
 
 ```csharp
 var model = new[]
@@ -3040,7 +3042,7 @@ void Actions()
 };
 ```
 
-**[⬆ back to top](#sumário)**
+**[⬆ de volta ao topo](#sumário)**
 
 </details>
 
@@ -3049,7 +3051,7 @@ void Actions()
 
 Version control exists for a reason. Leave old code in your history.
 
-**Bad:**
+**Ruim:**
 
 ```csharp
 doStuff();
@@ -3058,13 +3060,13 @@ doStuff();
 // doSoMuchStuff();
 ```
 
-**Good:**
+**Bom:**
 
 ```csharp
 doStuff();
 ```
 
-**[⬆ back to top](#sumário)**
+**[⬆ de volta ao topo](#sumário)**
 
 </details>
 
@@ -3073,7 +3075,7 @@ doStuff();
 
 Remember, use version control! There's no need for dead code, commented code, and especially journal comments. Use `git log` to get history!
 
-**Bad:**
+**Ruim:**
 
 ```csharp
 /**
@@ -3088,7 +3090,7 @@ public int Combine(int a,int b)
 }
 ```
 
-**Good:**
+**Bom:**
 
 ```csharp
 public int Combine(int a,int b)
@@ -3097,7 +3099,7 @@ public int Combine(int a,int b)
 }
 ```
 
-**[⬆ back to top](#sumário)**
+**[⬆ de volta ao topo](#sumário)**
 
 </details>
 
@@ -3106,7 +3108,7 @@ public int Combine(int a,int b)
 
 Comments are an apology, not a requirement. Good code _mostly_ documents itself.
 
-**Bad:**
+**Ruim:**
 
 ```csharp
 public int HashIt(string data)
@@ -3151,7 +3153,7 @@ public int HashIt(string data)
 If a comment explain WHAT the code is doing, it is probably a useless comment and can be implemented with a well named variable or function. The comment in the previous code could be replaced with a function named `ConvertTo32bitInt` so this comment is still useless.
 However it would be hard to express by code WHY the developer choose djb2 hash algorithm instead of sha-1 or another hash function. In that case a comment is acceptable.
 
-**Good:**
+**Bom:**
 
 ```csharp
 public int Hash(string data)
@@ -3177,7 +3179,7 @@ private int ConvertTo32BitInt(int value)
 }
 ```
 
-**[⬆ back to top](#sumário)**
+**[⬆ de volta ao topo](#sumário)**
 
 </details>
 
