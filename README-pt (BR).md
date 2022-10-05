@@ -445,7 +445,7 @@ Strings mágicas são valores string especificados diretamente dentro do código
 ```csharp
 if (userRole == "Admin")
 {
-    // logic in here
+    // lógica aqui
 }
 ```
 
@@ -455,20 +455,20 @@ if (userRole == "Admin")
 const string ADMIN_ROLE = "Admin"
 if (userRole == ADMIN_ROLE)
 {
-    // logic in here
+    // lógica aqui
 }
 ```
 
-Using this we only have to change in centralize place and others will adapt it.
+Desta forma nós centralizamos o local da alteração e nos outros lugares serão adaptados.
 
 **[⬆ de volta ao topo](#sumário)**
 
 </details>
 
 <details>
-  <summary><b>Don't add unneeded context</b></summary>
+  <summary><b>Não adicione context descenessário</b></summary>
 
-If your class/object name tells you something, don't repeat that in your variable name.
+Se o nome da sua classe/objeto lhe diz alguma coisa, não repita isso no nome da sua variável.
 
 **Ruim:**
 
@@ -501,7 +501,7 @@ public class Car
 </details>
 
 <details>
-  <summary><b>Use meaningful and pronounceable variable names</b></summary>
+  <summary><b>Use nomes de variáveis significativos e fáceis de ler</b></summary>
 
 **Ruim:**
 
@@ -520,7 +520,7 @@ var currentDate = DateTime.UtcNow.ToString("MMMM dd, yyyy");
 </details>
 
 <details>
-  <summary><b>Use the same vocabulary for the same type of variable</b></summary>
+  <summary><b>Use o mesmo vocabulário para o mesmo tipo de variável</b></summary>
 
 **Ruim:**
 
@@ -542,15 +542,17 @@ GetUser();
 </details>
 
 <details>
-  <summary><b>Use searchable names (part 1)</b></summary>
+  <summary><b>Use nomes pesquisáveis (parte 1)</b></summary>
 
-We will read more code than we will ever write. It's important that the code we do write is readable and searchable. By _not_ naming variables that end up being meaningful for understanding our program, we hurt our readers. Make your names searchable.
+Leremos mais código do que jamais escreveremos. É importante que o código e
+
+We will read more code than we will ever write. É importante que o código que escrevemos seja legível e pesquisável. Ao _não_ nomear variáveis que acabam sendo significativas para a compreensão do nosso programa, prejudicamos nossos leitores. Torne seus nomes pesquisáveis.
 
 **Ruim:**
 
 ```csharp
-// What the heck is data for?
-var data = new { Name = "John", Age = 42 };
+// Para que diabos serve _data_?
+var data = new Person { Name = "John", Age = 42 };
 
 var stream1 = new MemoryStream();
 var ser1 = new DataContractJsonSerializer(typeof(object));
@@ -565,11 +567,7 @@ Console.WriteLine(sr1.ReadToEnd());
 **Bom:**
 
 ```csharp
-var person = new Person
-{
-    Name = "John",
-    Age = 42
-};
+var person = new Person { Name = "John", Age = 42 };
 
 var stream2 = new MemoryStream();
 var ser2 = new DataContractJsonSerializer(typeof(Person));
@@ -586,7 +584,7 @@ Console.WriteLine(sr2.ReadToEnd());
 </details>
 
 <details>
-  <summary><b>Use searchable names (part 2)</b></summary>
+  <summary><b>Use nomes pesquisáveis (parte 2)</b></summary>
 
 **Ruim:**
 
@@ -629,7 +627,7 @@ if (person.PersonAccess == PersonAccess.ACCESS_UPDATE)
 </details>
 
 <details>
-  <summary><b>Use explanatory variables</b></summary>
+  <summary><b>Use variáveis explicativas</b></summary>
 
 **Ruim:**
 
@@ -645,7 +643,7 @@ if (matches[0].Success == true && matches[1].Success == true)
 
 **Bom:**
 
-Decrease dependence on regex by naming subpatterns.
+Diminua a dependência de regex nomeando subpadrões.
 
 ```csharp
 const string Address = "One Infinite Loop, Cupertino 95014";
@@ -664,13 +662,13 @@ if(cityGroup.Success == true && zipCodeGroup.Success == true)
 </details>
 
 <details>
-  <summary><b>Use default arguments instead of short circuiting or conditionals</b></summary>
+  <summary><b>Use argumentos padrão em vez de curto-circuito ou condicionais</b></summary>
 
-**Not good:**
+**Ruim:**
 
-This is not good because `breweryName` can be `NULL`.
+Isso não é bom porque `breweryName` pode ser `NULL`.
 
-This opinion is more understandable than the previous version, but it better controls the value of the variable.
+Essa opinião é mais compreensível que a versão anterior, mas controla melhor o valor da variável.
 
 ```csharp
 public void CreateMicrobrewery(string name = null)
