@@ -134,11 +134,7 @@ public bool IsShopOpen(string day, int amount)
 <details>
   <summary><b>Use letras maiúsculas consistentes</b></summary>
 
-Capitalization tells you a lot about your variables,
-functions, etc. These rules are subjective, so your team can choose whatever
-they want. The point is, no matter what you all choose, just be consistent.
-
-A capitalização diz muito sobre suas variáveis, funções, etc. Essas regras são subjetivas, então sua equipe pode escolher qual eles queiram. O ponto é, não importa o que você escolher, apenas seja consistente.
+A capitalização diz muito sobre suas variáveis, funções, etc. Essas regras são subjetivas, então sua equipe pode escolher qualquer uma. O ponto é, não importa qual seja a escolhida, apenas seja consistente.
 
 **Ruim:**
 
@@ -177,9 +173,9 @@ class Alpaca {}
 </details>
 
 <details>
-  <summary><b>Use nomes pronunciáveis</b></summary>
+  <summary><b>Use nomes fáceis de ler</b></summary>
 
-Levará tempo para investigar o significado das variáveis e funções quando elas não forem pronunciáveis.
+Levará tempo para investigar o significado das variáveis e funções quando elas não forem fáceis de ler.
 
 **Ruim:**
 
@@ -284,9 +280,9 @@ public static void main(String[] args)
 ## Variáveis
 
 <details>
-  <summary><b>Avoid nesting too deeply and return early</b></summary>
+  <summary><b>Evite condições aninhadas e retorne rapidamente</b></summary>
 
-Too many if else statements can make the code hard to follow. **Explicit is better than implicit**.
+Muitas instruções if else podem tornar o código difícil de seguir. **Explícito é melhor do que implícito**.
 
 **Ruim:**
 
@@ -395,9 +391,9 @@ public long Fibonacci(int n)
 </details>
 
 <details>
-  <summary><b>Avoid mental mapping</b></summary>
+  <summary><b>Evite o mapeamento mental</b></summary>
 
-Don’t force the reader of your code to translate what the variable means. **Explicit is better than implicit**.
+Não force o leitor do seu código a traduzir o que a varivável significa. **Explícito é melhor do que implícito**.
 
 **Ruim:**
 
@@ -413,7 +409,7 @@ for (var i = 0; i < l.Count(); i++)
     // ...
     // ...
     // ...
-    // Wait, what is `li` for again?
+    // Espere, o que é `li` de novo?
     Dispatch(li);
 }
 ```
@@ -440,9 +436,9 @@ foreach (var location in locations)
 </details>
 
 <details>
-  <summary><b>Avoid magic string</b></summary>
+  <summary><b>Evite strings mágicas</b></summary>
 
-Magic strings are string values that are specified directly within application code that have an impact on the application’s behavior. Frequently, such strings will end up being duplicated within the system, and since they cannot automatically be updated using refactoring tools, they become a common source of bugs when changes are made to some strings but not others.
+Strings mágicas são valores string especificados diretamente dentro do código da aplicação que impactam no comportamento da aplicação. Frequentemente, essas strings acabarão sendo duplicadas no sistema, e como elas não podem ser atualziadas automaticamente usando ferramentas de refatoração, elas se tornaram uma fonte comum de erros quando são feitas alterações em algumas strings, mas não em outras.
 
 **Ruim:**
 
