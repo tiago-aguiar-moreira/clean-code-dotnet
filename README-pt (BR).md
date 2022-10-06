@@ -694,31 +694,30 @@ public void CreateMicrobrewery(string breweryName = "Hipster Brew Co.")
 ## Funções
 
 <details>
-  <summary><b>Avoid side effects</b></summary>
+  <summary><b>Evite efeitos colaterais</b></summary>
 
-A function produces a side effect if it does anything other than take a value in and return another value or values. A side effect could be writing to a file, modifying some global variable, or accidentally wiring all your money to a stranger.
+Uma função produz um efeito colateral se fizer algo além de receber um valor e retornar outro valor ou valores. Um efeito colateral pode ser escrever em um arquivo, modificar alguma variável global ou acidentalmente transferir todo o seu dinheiro para um estranho.
 
-Now, you do need to have side effects in a program on occasion. Like the previous example, you might need to write to a file. What you want to do is to centralize where you are doing this. Don't have several functions and classes that write to a particular file. Have one service that does it. One and only one.
+Agora, você precisa ter efeitos colaterais em um programa de vez em quando. Como no exemplo anterior, talvez seja necessário gravar em um arquivo. O que você quer fazer é centralizar onde você está fazendo isso. Não tenha várias funções e classes que gravam em um arquivo específico. Tenha um serviço que faça isso. Um e somente um.
 
-The main point is to avoid common pitfalls like sharing state between objects without any structure, using mutable data types that can be written to by anything, and not centralizing where your side effects occur. If you can do this, you will be happier
-than the vast majority of other programmers.
+O ponto principal é evitar armadilhas comuns, como compartilhar o estado entre objetos sem nenhuma estrutura, usar tipos de dados mutáveis que podem ser gravados por qualquer coisa e não centralizar onde ocorrem seus efeitos colaterais. Se você puder fazer isso, será mais feliz do que a grande maioria dos outros programadores.
 
 **Ruim:**
 
 ```csharp
-// Global variable referenced by following function.
-// If we had another function that used this name, now it'd be an array and it could break it.
+// Variável global referenciada pela seguinte função.
+// Se tivéssemos outra função que usasse esse nome, agora seria um array e poderia quebrá-lo.
 var name = "Ryan McDermott";
 
 public void SplitAndEnrichFullName()
 {
     var temp = name.Split(" ");
-    name = $"His first name is {temp[0]}, and his last name is {temp[1]}"; // side effect
+    name = $"His first name is {temp[0]}, and his last name is {temp[1]}"; // efeito colateral
 }
 
 SplitAndEnrichFullName();
 
-Console.WriteLine(name); // His first name is Ryan, and his last name is McDermott
+Console.WriteLine(name); // Seu primeiro nome é Ryan, e seu sobrenome é McDermott
 ```
 
 **Bom:**
@@ -734,7 +733,7 @@ var name = "Ryan McDermott";
 var fullName = SplitAndEnrichFullName(name);
 
 Console.WriteLine(name); // Ryan McDermott
-Console.WriteLine(fullName); // His first name is Ryan, and his last name is McDermott
+Console.WriteLine(fullName); // Seu primeiro nome é Ryan, e seu sobrenome é McDermott
 ```
 
 **[⬆ de volta ao topo](#sumário)**
@@ -742,7 +741,7 @@ Console.WriteLine(fullName); // His first name is Ryan, and his last name is McD
 </details>
 
 <details>
-  <summary><b>Avoid negative conditionals</b></summary>
+  <summary><b>Evite condicionais negativas</b></summary>
 
 **Ruim:**
 
@@ -777,10 +776,9 @@ if (IsDOMNodePresent(node))
 </details>
 
 <details>
-  <summary><b>Avoid conditionals</b></summary>
+  <summary><b>Evite condicionais</b></summary>
 
-This seems like an impossible task. Upon first hearing this, most people say, "how am I supposed to do anything without an `if` statement?" The answer is that you can use polymorphism to achieve the same task in many cases. The second question is usually, "well that's great but why would I want to do that?" The answer is a previous clean code concept we learned: a function should only do
-one thing. When you have classes and functions that have `if` statements, you are telling your user that your function does more than one thing. Remember, just do one thing.
+Isso parece ser uma tarefa impossível. Ao ouvir isso pela primeira vez, a maioria das pessoas diz: "como devo fazer algo sem uma instrução `if`?" A resposta é que você pode usar o polimorfismo para realizar a mesma tarefa em muitos casos. A segunda pergunta geralmente é: "bem, isso é ótimo, mas por que eu iria querer fazer isso?" A resposta é um conceito de código limpo anterior que aprendemos: uma função só deve fazer uma coisa. Quando você tem classes e funções que possuem instruções `if`, você está dizendo ao seu usuário que sua função faz mais de uma coisa. Lembre-se, apenas faça uma coisa.
 
 **Ruim:**
 
@@ -850,7 +848,7 @@ class Cessna : IAirplane
 </details>
 
 <details>
-  <summary><b>Avoid type-checking (part 1)</b></summary>
+  <summary><b>Evite verificações de tipo (part 1)</b></summary>
 
 **Ruim:**
 
@@ -877,7 +875,7 @@ public Path TravelToTexas(Traveler vehicle)
 }
 ```
 
-or
+ou
 
 ```csharp
 // pattern matching
@@ -899,7 +897,7 @@ public Path TravelToTexas(object vehicle)
 </details>
 
 <details>
-  <summary><b>Avoid type-checking (part 2)</b></summary>
+  <summary><b>Evite verificações de tipo (part 2)</b></summary>
 
 **Ruim:**
 
@@ -930,9 +928,9 @@ public int Combine(int val1, int val2)
 </details>
 
 <details>
-  <summary><b>Avoid flags in method parameters</b></summary>
+  <summary><b>Evite sinalizações nos parâmetros do método</b></summary>
 
-A flag indicates that the method has more than one responsibility. It is best if the method only has a single responsibility. Split the method into two if a boolean parameter adds multiple responsibilities to the method.
+Um sinalizador (basicamente um `if else`) indica que o método tem mais de uma responsabilidade. É melhor que o método tenha apenas uma única responsabilidade. Divida o método em dois se um parâmetro booleano adicionar várias responsabilidades ao método.
 
 **Ruim:**
 
@@ -969,10 +967,10 @@ public void CreateTempFile(string name)
 </details>
 
 <details>
-  <summary><b>Don't write to global functions</b></summary>
+  <summary><b>Não escreva funções globais</b></summary>
 
-Polluting globals is a bad practice in many languages because you could clash with another library and the user of your API would be none-the-wiser until they get an exception in production. Let's think about an example: what if you wanted to have configuration array.
-You could write global function like `Config()`, but it could clash with another library that tried to do the same thing.
+Poluir os globais é uma prática ruim em muitas linguagens porque você pode entrar em conflito com outra biblioteca e o usuário de sua API não saberia nada até obter uma exceção na produção. Vamos pensar em um exemplo: e se você quisesse ter um array de configuração.
+Você poderia escrever uma função global como `Config()`, mas poderia colidir com outra biblioteca que tentasse fazer a mesma coisa.
 
 **Ruim:**
 
@@ -1004,7 +1002,7 @@ class Configuration
 }
 ```
 
-Load configuration and create instance of `Configuration` class
+Carrega a configuração e cria uma instância da classe `Configuration`.
 
 ```csharp
 var configuration = new Configuration(new Dictionary<string, string>() {
@@ -1012,23 +1010,24 @@ var configuration = new Configuration(new Dictionary<string, string>() {
 });
 ```
 
-And now you must use instance of `Configuration` in your application.
+Agora você precisa usar a instância de `Configuration` na sua aplicação.
 
 **[⬆ de volta ao topo](#sumário)**
 
 </details>
 
 <details>
-  <summary><b>Don't use a Singleton pattern</b></summary>
+  <summary><b>Não use o padrão Singleton</b></summary>
 
-Singleton is an [anti-pattern](https://en.wikipedia.org/wiki/Singleton_pattern). Paraphrased from Brian Button:
+Singleton é um [anti-padrão](https://en.wikipedia.org/wiki/Singleton_pattern). Parafraseado de Brian Button:
 
-1. They are generally used as a **global instance**, why is that so bad? Because **you hide the dependencies** of your application in your code, instead of exposing them through the interfaces. Making something global to avoid passing it around is a [code smell](https://en.wikipedia.org/wiki/Code_smell).
-2. They violate the [single responsibility principle](#single-responsibility-principle-srp): by virtue of the fact that **they control their own creation and lifecycle**.
-3. They inherently cause code to be tightly [coupled](https://en.wikipedia.org/wiki/Coupling_%28computer_programming%29). This makes faking them out under **test rather difficult** in many cases.
-4. They carry state around for the lifetime of the application. Another hit to testing since **you can end up with a situation where tests need to be ordered** which is a big no for unit tests. Why? Because each unit test should be independent from the other.
+1. Ele geralmente é usado como uma **instância global**. Por que isso é tão ruim? Porque **você oculta as dependências** do seu aplicativo em seu código, em vez de expô-las por meio das interfaces. Tornar algo global para evitar informá-lo é um [cheiro de código](https://en.wikipedia.org/wiki/Code_smell).
+2. Ele viola o **princípio da responsabilidade única**: pelo fato **dele controlar sua própria criação e ciclo de vida**.
+3. Ele faz inerentemente com que o código seja fortemente [acoplado](https://en.wikipedia.org/wiki/Coupling_%28computer_programming%29). Em muitos casos isso torna o uso de `mock` **bastante difícil em testes**.
 
-There is also very good thoughts by [Misko Hevery](http://misko.hevery.com/about/) about the [root of problem](http://misko.hevery.com/2008/08/25/root-cause-of-singletons/).
+4. Eles carregam o estado por toda a vida útil do aplicativo. Outro impacto nos testes, pois **você pode acabar com uma situação em que os testes precisam ser ordenados**, o que é um grande não para testes de unidade. Por quê? Porque cada teste de unidade deve ser independente do outro.
+
+Há também relfexões muito boas por [Misko Hevery](http://misko.hevery.com/about/) sobre a [raiz do problema](http://misko.hevery.com/2008/08/25/root-cause-of-singletons/).
 
 **Ruim:**
 
@@ -1820,20 +1819,20 @@ class Employee
 ## SOLID
 
 <details>
-  <summary><b>What is SOLID?</b></summary>
+  <summary><b>O que é SOLID?</b></summary>
 
-**SOLID** is the mnemonic acronym introduced by Michael Feathers for the first five principles named by Robert Martin, which meant five basic principles of object-oriented programming and design.
+**SOLID** é o acrônimo introduzido por Michael Feathers para os primeiros cinco princípios nomeados por Robert Martin, que significava cinco princípios básicos de programação e design orientados a objetos.
 
-- [S: Single Responsibility Principle (SRP)](#single-responsibility-principle-srp)
-- [O: Open/Closed Principle (OCP)](#openclosed-principle-ocp)
-- [L: Liskov Substitution Principle (LSP)](#liskov-substitution-principle-lsp)
-- [I: Interface Segregation Principle (ISP)](#interface-segregation-principle-isp)
-- [D: Dependency Inversion Principle (DIP)](#dependency-inversion-principle-dip)
+- S: Single Responsibility Principle (SRP)
+- O: Open/Closed Principle (OCP)
+- L: Liskov Substitution Principle (LSP)
+- I: Interface Segregation Principle (ISP)
+- D: Dependency Inversion Principle (DIP)
 
 </details>
 
 <details>
-  <summary><b>Single Responsibility Principle (SRP)</b></summary>
+  <summary><b> Single Responsibility Principle (SRP)</b></summary>
 
 As stated in Clean Code, "There should never be more than one reason for a class to change". It's tempting to jam-pack a class with a lot of functionality, like when you can only take one suitcase on your flight. The issue with this is that your class won't be conceptually cohesive and it will give it many reasons to change. Minimizing the amount of times you need to change a class is important.
 
